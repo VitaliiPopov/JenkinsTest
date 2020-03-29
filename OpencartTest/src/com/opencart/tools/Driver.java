@@ -23,6 +23,8 @@ public class Driver {
             if (ConstantVariables.BROWSER_NAME.equalsIgnoreCase("chrome")) {
                 ChromeOptions options = new ChromeOptions();
                 options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+                options.addArguments("headless");
+                options.addArguments("start-maximized");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(options);
             } else if (ConstantVariables.BROWSER_NAME.equalsIgnoreCase("firefox")) {
@@ -32,7 +34,7 @@ public class Driver {
                 driver = new FirefoxDriver(options);
             }
         }
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get(ConstantVariables.URL);
         return driver;
