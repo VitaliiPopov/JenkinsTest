@@ -17,23 +17,19 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
-    private static WebDriver driver = null;
+    private static WebDriver driver;
 
     private Driver() {
     }
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            if (ConstantVariables.BROWSER_NAME.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-                ChromeOptions options = new ChromeOptions();
-                options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-                options.addArguments("--headless");
-                options.addArguments("--start-maximized");
-                options.addArguments("--disable-gpu");
-                driver = new ChromeDriver(options);
-            }
-        }
+        ChromeOptions options = new ChromeOptions();
+        options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+        /*options.addArguments("--headless");
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-gpu");*/
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver(options);
         //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.get(ConstantVariables.URL);
