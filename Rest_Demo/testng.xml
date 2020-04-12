@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Api">
-    <test name="PetTest">
+    <!--<test name="PetTest">
         <classes>
             <class name="com.petstore.test.pet.FindByStatusTest">
                 <methods>
@@ -60,10 +60,10 @@
                 </methods>
             </class>
         </classes>
-    </test>
+    </test>-->
     <test name="StoreTest">
         <classes>
-            <class name="com.petstore.test.store.DeleteStoreOrder">
+            <!--<class name="com.petstore.test.store.DeleteStoreOrder">
                 <methods>
                     <include name="getStoreInventory"/>
                 </methods>
@@ -72,7 +72,7 @@
                 <methods>
                     <include name="getStoreInventory"/>
                 </methods>
-            </class>
+            </class>-->
             <class name="com.petstore.test.store.create_order.SendRequestTest">
                 <methods>
                     <include name="sendRequestBody_ValidOrder"/>
@@ -91,7 +91,7 @@
             </class>
         </classes>
     </test>
-    <test name="UserTest">
+    <!--<test name="UserTest">
         <classes>
             <class name="com.petstore.test.user.ApiLoginTest">
                 <methods>
@@ -127,5 +127,5 @@
                 </methods>
             </class>
         </classes>
-    </test>
+    </test>-->
 </suite>

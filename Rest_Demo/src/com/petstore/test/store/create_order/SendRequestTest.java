@@ -20,9 +20,9 @@ public class SendRequestTest {
     @BeforeClass
     public void setRequestSpec() {
         RequestSpecification requestSpec = new RequestSpecBuilder()
-                .setBaseUri("http://192.168.99.100/")
-                .setPort(8080)
-                .setBasePath("api/v2/store/order")
+                .setBaseUri("http://40.68.47.68/")
+                .setPort(9001)
+                .setBasePath("api/v3/store/order")
                 .setAccept(ContentType.JSON)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
