@@ -1,5 +1,6 @@
 package com.petstore.test.store.create_order;
 
+import com.petstore.data.ConstantVariables;
 import com.petstore.data.Order;
 import com.petstore.data.OrderRepository;
 import io.restassured.RestAssured;
@@ -20,9 +21,9 @@ public class SendRequestTest {
     @BeforeClass
     public void setRequestSpec() {
         RequestSpecification requestSpec = new RequestSpecBuilder()
-                .setBaseUri("http://localhost/")
-                .setPort(9001)
-                .setBasePath("api/v3/store/order")
+                .setBaseUri(ConstantVariables.API_URL)
+                .setPort(ConstantVariables.API_PORT)
+                .setBasePath(ConstantVariables.API_PATH + ConstantVariables.STORE_PATH)
                 .setAccept(ContentType.JSON)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
@@ -32,7 +33,7 @@ public class SendRequestTest {
 
     @Test
     public void sendRequestBody_ValidOrder() {
-        given()
+        Order order = given()
                 .spec(requestSpecification)
                 .body(OrderRepository.validOrder()).
         when()

@@ -1,5 +1,6 @@
 package com.petstore.test.store.get_order;
 
+import com.petstore.data.ConstantVariables;
 import com.petstore.data.OrderRepository;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -15,11 +16,11 @@ import static io.restassured.RestAssured.*;
 public class ReturningStatusCodeTest {
 
     @BeforeClass
-    public static void setRequestSpec(){
+    public void setRequestSpec(){
         RequestSpecification requestSpec = new RequestSpecBuilder()
-                .setBaseUri("http://localhost/")
-                .setPort(9001)
-                .setBasePath("api/v3/store/order")
+                .setBaseUri(ConstantVariables.API_URL)
+                .setPort(ConstantVariables.API_PORT)
+                .setBasePath(ConstantVariables.API_PATH + ConstantVariables.STORE_PATH)
                 .setAccept(ContentType.JSON)
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
@@ -37,7 +38,7 @@ public class ReturningStatusCodeTest {
                 .spec(requestSpecification)
                 .pathParam("id", 1).
         when()
-                .delete("/{id}").
+                .delete(ConstantVariables.STORE_ID).
         then()
                 .statusCode(200);
     }
@@ -48,7 +49,7 @@ public class ReturningStatusCodeTest {
                 spec(requestSpecification).
                 pathParam("id", 1).
         when().
-                get("/{id}").
+                get(ConstantVariables.STORE_ID).
         then().
                 statusCode(200);
     }
@@ -59,7 +60,7 @@ public class ReturningStatusCodeTest {
                 .spec(requestSpecification)
                 .pathParam("id", 10000).
         when()
-                .get("/{id}").
+                .get(ConstantVariables.STORE_ID).
         then()
                 .statusCode(404);
     }

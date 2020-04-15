@@ -32,6 +32,7 @@ public class RestApiSearshTest {
         assertEquals(statusLine, "HTTP/1.1 200 OK");
     }
 
+
     @Test
     void checkPetById() {
         Response response = (Response) RestAssured.given()
